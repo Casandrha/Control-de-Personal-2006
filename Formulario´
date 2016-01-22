@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trabajo Final</title>
+<style type="text/css" media="screen">  
+
+
+		
+
+                                               /* Atributos de la página */
+		body { margin-top: 80px;      
+		       margin-left: 150px;
+			   margin-right: 100px;
+               margin-bottom: 60px;
+			   font-family: Georgia, "Times New Roman",
+               Times, serif; color: #2F4901;
+       	       background-image: url(Gold.jpg) ;
+			   }
+			   
+	    			
+		table {                                  /* Atributos de la tabla */
+		
+                 border-style: dotted; 
+				 border-width: 1px; 
+				 border-color: #BDB76B; 
+                 background-color:#EEE8AA;
+                 border-spacing:.5px;
+				 font-family: verdana, arial; 
+                 font-size: 10.5pt; 
+				 color: #556B2F;
+              }
+ 
+
+                                             /* Atributos de botones */
+        .boton {                                                
+                 font-family: Arial, Helvetica, sans-serif;
+                 background-color: #556B2F;
+                 border-top-width: 1px;
+                 border-right-width: 1px;
+                 border-bottom-width: 1px;
+                 border-left-width: 1px;
+                 border-top-style: solid;
+                 border-right-style: solid;
+                 border-bottom-style: solid;
+                 border-left-style: solid;
+                 border-top-color: #808000;
+                 border-right-color: #808000;
+                 border-bottom-color: #808000;
+                 border-left-color: #808000;
+                 color: white;
+                 font-weight: bold;
+               }
+		 
+		 </style>
+		 
+</head>
+
+<body>
+
+
+<?php        // ** código de php sin terminar **  En su momento la base de Datos se creó con Xampp
+
+
+@$conexion=mysql_connect("localhost", "root", "") or exit("No se pudo establecer una conexión");
+
+@$dbseleccionada=mysql_select_db("empresa", $conexion) or exit("No se pudo seleccionar la base de datos");
+
+@$buscar = $_POST['buscar'];
+@$campo= $_POST['eleccion'];
+@$mostrar= $_POST['selectall'];  
+
+
+$result = mysql_query("SELECT * FROM empleado WHERE $campo LIKE '$buscar' ORDER by $campo", $conexion);
+
+if(mysql_num_rows($result)!=0){  
+?> 
+<table border = '1'>
+
+<tr>
+<td><b>Nro empleado</b></td>
+<td><b>Nombre</b></td>
+<td><b>Apellido</b></td>
+<td><b>Area-Trabajo</b></td>
+<td><b>Edad</b></td>
+<td><b>Salario</b></td>
+<td><b>E-Mail</b></td>
+</tr>
+
+<?php
+
+while ($row = mysql_fetch_array($result)){
+ 
+?>
+
+<tr>
+<td> <?php echo $row['nro_EMP'] ?> </td>
+<td> <?php echo $row['nombre'] ?> </td>
+<td> <?php echo $row['apellido'] ?> </td>
+<td> <?php echo $row['area_trab'] ?> </td>
+<td> <?php echo $row['edad'] ?> </td>
+<td> <?php echo $row['salario'] ?> </td>
+<td> <?php echo $row['email'] ?> </td>
+
+</tr>
+
+<?php
+}
+?>
+<?php
+}
+else {
+		echo </br></br><a><font size="6"> No se encontraron resultados.<br> Por favor, haga click en </font size>
+	
+
+<a href= "formulario.html"> <b>Volver a buscar</b></br>
+</br>
+</a>
+</table>
+<p>
+  <?php
+@mysql_free_result($result);
+@mysql_close();
+?>
+</p>
+
+
+</body>
+
+</html>
