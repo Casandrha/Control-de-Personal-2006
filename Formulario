@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trabajo Final</title>
+<style type="text/css" media="screen">  
+
+
+		
+                                               /* Atributos de la página */
+		body { margin-top: 80px;      
+		       margin-left: 150px;
+			   margin-right: 100px;
+               margin-bottom: 60px;
+			   font-family: Georgia, "Times New Roman",
+               Times, serif; color: #2F4901;
+       	       background-image: url(Gold.jpg) ;
+			   }
+			   
+	    			
+		                                          /* Atributos de botones */
+        .boton {                                                
+                 font-family: Arial, Helvetica, sans-serif;
+                 background-color: #556B2F;
+                 border-top-width: 1px;
+                 border-right-width: 1px;
+                 border-bottom-width: 1px;
+                 border-left-width: 1px;
+                 border-top-style: solid;
+                 border-right-style: solid;
+                 border-bottom-style: solid;
+                 border-left-style: solid;
+                 border-top-color: #808000;
+                 border-right-color: #808000;
+                 border-bottom-color: #808000;
+                 border-left-color: #808000;
+                 color: white;
+                 font-weight: bold;
+               }
+		 
+		 </style>
+		 
+</head>
+
+<body>
+
+
+
+</br>
+</br>
+<h1><p align="left"= left>Búsqueda de empleados</h1>   
+</br>
+</br>
+</br>
+</br>
+<form method = "POST" action = "formulario.php">
+ <p><strong>Mostrar listado completo de empleados</strong>
+ <input type="submit" value="Mostrar"class="boton"></p>
+ <br/>
+</form>
+  
+ <form method = "POST" action = "TrabFinal.php">
+  <p><strong>Elija el criterio de búsqueda</strong>
+  <select size=1 name="eleccion" align = "center"style="width:120px;height:20px;background-color:#EEE8AA;
+  font-size:10pt; font-family:Verdana;text-align:left;">
+  <option value ="nro_EMP" selected> Nº de Empleado </option>
+  <option value ="nombre" >Nombre </option>
+  <option value ="apellido" >Apellido </option>
+  <option value ="area_trab" >Área de trabajo </option>
+  <option value ="edad" > Edad</option>
+  <option value ="salario" >Salario </option>
+  <option value ="email" >Email </option>
+  </select>
+ </p> 
+  <strong>Ingrese un dato para realizar la búqueda :</strong>
+ <input type="text" name="buscar" size="20"style="width:120px;height:20px;background-color:#EEE8AA; <!-- Establezco atributos de la ventana  -->
+ font-size:10pt; font-family:Verdana;text-align:left;"> 
+ <input type="submit" value="Buscar"class="boton">   <!-- Establezco atributos del botón  -->
+ </form>
+
+</body>
+</html>
