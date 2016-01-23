@@ -1,0 +1,59 @@
+<form action="Andrea.php" method="POST">
+<input type="submit" name="selectall" value="Mostrar Todo">
+</form><form action="Andrea.php" method="POST">
+<select name="campo">
+<option value="" selected="selected">Selecciona el Campo</option>
+<option value="nro_EMP">Nro de Empleado</option> 
+<option value="nombre">Nombre</option> 
+<option value="apellido">Apellido</option> 
+<option value="area_trab">Área Laboral</option> 
+<option value="edad">Edad</option> 
+<option value="salario">Sueldo</option> 
+<option value="email">Email</option> 
+</select>
+Ingrese el valor a buscar o parte de el.
+<input type="text" name="valor" size="20"><input type="submit" name="selectall">
+</form>
+<?php 
+@$mostrar = $_POST["selectall"];
+@$valor = $_POST["valor"]; 
+@$campo = $_POST["campo"];
+$connect = mysql_connect("localhost", "root", "") or exit("No se pudo establecer la conexion");
+$selectbd = mysql_select_db ("empresa", $connect) or exit("No se pudo seleccionar la dase de datos");
+
+if ($mostrar == "Mostrar Todo") {
+$result = mysql_query ("SELECT*FROM empleado", $connect);
+}
+elseif ($mostrar =="" AND $campo ==""){
+}
+elseif ($campo =="nro_EMP"){
+$result = mysql_query ("SELECT*FROM empleado WHERE $campo LIKE \"$valor\"", $connect);
+}
+else {
+$result = mysql_query ("SELECT*FROM empleado WHERE $campo LIKE \"%$valor%\"", $connect);
+}
+if(@mysql_num_rows($result)!=0){
+echo '<table width="918" border="1">
+<tr>
+<td width="93"><b>Nro De Empleado</b></td>
+<td width="192"><b>Nombre</b></td>
+<td width="142"><b>Apellido</b></td>
+<td width="137"><b>Area Laboral</b></td>
+<td width="50"><b>Edad</b></td>
+<td width="104"><b>Salario</b></td>
+<td width="200"><b>Email</b></td>
+</tr>';
+}
+while (@$row = mysql_fetch_array($result)) {
+?>
+<tr>
+<td><?php echo $row['nro_EMP']; ?></td>
+<td><?php echo $row['nombre']; ?></td> 
+<td><?php echo $row['apellido']; ?></td>
+<td><?php echo $row['area_trab']; ?></td>
+<td><?php echo $row['edad']; ?></td>
+<td><?php echo $row['salario']; ?></td>
+<td><?php echo $row['email'];}?></td>
+</tr>
+</table>
+
