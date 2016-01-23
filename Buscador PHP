@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Prueba Final</title>
+<style type= "text/css">
+p{color:black; font family: Verdana; background-color:#ffffc6;}
+
+</style>
+</head>
+
+
+<body>
+
+<?php
+
+//include ("conect.php");
+@$conexion=mysql_connect("localhost", "root", "") 
+or exit("No se pudo establecer una conexión");
+@$dbseleccionada=mysql_select_db("empresa", $conexion)
+or exit("No se pudo seleccionar la base de datos");
+
+@$buscar = $_POST[buscar];
+
+
+@$buscar = $_POST['buscar'];
+@$campo= $_POST['eleccion'];
+//echo $campo;
+
+
+
+$result = mysql_query("SELECT * FROM empleado WHERE $campo LIKE '$buscar%' ORDER by $campo", $conexion);
+
+if(mysql_num_rows($result)!=0){  
+?>
+<table border = '1'>
+
+<tr>
+
+<td><b>Nro empleado</b></td>
+<td><b>Nombre</b></td>
+<td><b>Apellido</b></td>
+<td><b>Area-Trabajo</b></td>
+<td><b>Edad</b></td>
+<td><b>Salario</b></td>
+<td><b>E-Mail</b></td>
+</tr>
+<?php
+
+while ($row = mysql_fetch_array($result)){
+ 
+?>
+
+<tr>
+<td> <?php echo $row['nro_EMP'] ?> </td>
+<td> <?php echo $row['nombre'] ?> </td>
+<td> <?php echo $row['apellido'] ?> </td>
+<td> <?php echo $row['area_trab'] ?> </td>
+<td> <?php echo $row['edad'] ?> </td>
+<td> <?php echo $row['salario'] ?> </td>
+<td> <?php echo $row['email'] ?> </td>
+
+</tr>
+
+<?php
+}
+?>
+<?php
+}
+else {
+		echo "No se encontraron datos";
+	}
+?>
+
+</table>
+<p>
+  <?php
+@mysql_free_result($result);
+@mysql_close();
+?>
+</p>
+<p><a href="formulario.html">Retornar</a></p>
+
+</body>
+
+</html>
