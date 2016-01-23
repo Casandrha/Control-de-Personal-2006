@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Prueba Final</title>
+<style type= "text/css">
+p{color:#ffffc6; font family: Verdana; background-color:#3d3d00;}
+#cabezera {background-color:#ffffc6}
+</style>
+</head>
+
+<body>
+
+
+<form method = "POST" action = "buscador.php">
+ <div id="cabezera" ><p><strong><h1>Elecci&oacute;n de dato a buscar en Base de Datos:</h1></strong>
+  <br/>
+  <strong>Ingrese el dato a buscar  :</strong>
+ <input type="text" name="buscar" size="20"> 
+<br/>
+<br/>
+
+ <input type="submit" value="Buscar">
+ </p>
+<p> BD Completa Limpiar y click en Buscar </p>
+  
+<input type= "reset" name ="limpiar" value ="Limpiar" />
+  
+   
+	
+<p>Elegir Perfil de la Busqueda 
+  <select size=8 name="eleccion" align = "center">
+  <option value ="nro_EMP" selected> Nro_Emp </option>
+  <option value ="nombre" >Nombre </option>
+  <option value ="apellido" >Apellido </option>
+  <option value ="area_trab" >Area_Trabajo </option>
+  <option value ="edad" > Edad</option>
+  <option value ="salario" >Salario </option>
+  <option value ="email" >Email </option>
+  </select>
+ </p> 
+ 
+ 
+ 
+ <input type="submit" value="Filtrar">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<p>Andrea Garibotto. 2006</p>
+ </div>
+</form>
+
+
+</body>
+</html>
